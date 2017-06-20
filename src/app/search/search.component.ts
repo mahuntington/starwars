@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
     findCharacter(name){
         this.http.get('http://swapi.co/api/people/?search=' + name)
         .toPromise()
-        .then(response => this.results = response.json().results );
+        .then(response => console.log(this.results = response.json().results) );
     }
 
     ngOnInit() {
