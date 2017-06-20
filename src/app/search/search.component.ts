@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
     styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+    results;
 
     constructor(
         private http: Http
@@ -16,7 +17,7 @@ export class SearchComponent implements OnInit {
     findCharacter(name){
         this.http.get('http://swapi.co/api/people/?search=' + name)
         .toPromise()
-        .then(response => console.log(response.json()));
+        .then(response => this.results = response.json().results );
     }
 
     ngOnInit() {
