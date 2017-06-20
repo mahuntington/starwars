@@ -4,13 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 
+import { FormsModule }   from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
