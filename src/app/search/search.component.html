@@ -1,5 +1,5 @@
 <section>
     <h2>Search For A Star Wars Character</h2>
     <input [(ngModel)]="name" type="text" placeholder="Character Name"/>
-    <input type="submit" value="Search"/>
+    <input (click)="findCharacter(name)" type="submit" value="Search"/>
 </section>
