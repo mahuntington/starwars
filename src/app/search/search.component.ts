@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 
 @Component({
     selector: 'app-search',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-    constructor() { }
+    constructor(
+        private http: Http
+    ) { }
 
     findCharacter(name){
         console.log('finding ' + name);
