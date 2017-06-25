@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
+import { Subject }           from 'rxjs/Subject';
+
+// Observable operators
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
     selector: 'app-search',
@@ -10,25 +13,35 @@ import 'rxjs/add/operator/toPromise';
 })
 export class SearchComponent implements OnInit {
     results;
+    searchTerms = new Subject<string>();
 
     constructor(
         private http: Http
     ) { }
 
     findCharacter(name){
-        const result = this.http.get('http://swapi.co/api/people/?search=' + name)
-        .map((response)=>{
-            return response.json().results;
-        }).subscribe(
-            (response)=>{
-                this.results = response;
-            }
-        );
+        this.searchTerms.next(name);
+
+        // const result = this.http.get('http://swapi.co/api/people/?search=' + name)
+        // .map((response)=>{
+        //     return response.json().results;
+        // }).subscribe(
+        //     (response)=>{
+        //         this.results = response;
+        //     }
+        // );
+
         // .toPromise()
         // .then(response => console.log(this.results = response.json().results) );
     }
 
     ngOnInit() {
+        this.searchTerms
+            .debounceTime(300)
+            .distinctUntilChanged()
+            .subscribe((term)=>{
+                console.log(term);
+            });
     }
 
 }
