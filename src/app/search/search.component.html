@@ -1,7 +1,6 @@
 <section>
     <h2>Search For A Star Wars Character</h2>
-    <input [(ngModel)]="name" type="text" placeholder="Character Name"/>
-    <input (click)="findCharacter(name)" type="submit" value="Search"/>
+    <input [(ngModel)]="name" type="text" placeholder="Character Name" (keyup)="findCharacter(name)" />
 </section>
 <section *ngIf="results">
     <h2>Search Results</h2>
