@@ -37,10 +37,8 @@ export class SearchComponent implements OnInit {
         this.searchTerms
             .debounceTime(300)
             .distinctUntilChanged()
-            .switchMap(term => this.createAPIObservable(term))
-            .subscribe((results)=>{
-                this.results = results;
-            });
+            .switchMap(name => this.createAPIObservable(name))
+            .subscribe(results=> this.results = results );
     }
 
 }
