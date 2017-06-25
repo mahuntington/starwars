@@ -24,18 +24,6 @@ export class SearchComponent implements OnInit {
 
     findCharacter(name){
         this.searchTerms.next(name);
-
-        // const result = this.http.get('http://swapi.co/api/people/?search=' + name)
-        // .map((response)=>{
-        //     return response.json().results;
-        // }).subscribe(
-        //     (response)=>{
-        //         this.results = response;
-        //     }
-        // );
-
-        // .toPromise()
-        // .then(response => console.log(this.results = response.json().results) );
     }
 
     createAPIObservable(name){
