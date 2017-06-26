@@ -9,6 +9,7 @@ export class SearchService {
 
     createAPIObservable(name){
         return this.http
-            .get('http://swapi.co/api/people/?search=' + name);
+            .get('http://swapi.co/api/people/?search=' + name)
+            .map(results => results.json().results);
     }
 }
