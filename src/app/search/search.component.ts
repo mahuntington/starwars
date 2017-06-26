@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 
 import { Subject } from 'rxjs/Subject';
 import { SearchService } from './search.service';
@@ -21,7 +20,6 @@ export class SearchComponent implements OnInit {
 
     constructor(
         private heroSearchService: SearchService,
-        private http: Http
     ) { }
 
     findCharacter(name){
