@@ -30,11 +30,9 @@ export class SearchComponent implements OnInit {
         this.searchTerms
             .debounceTime(300)
             .distinctUntilChanged()
-            .subscribe(name => {
-                this.characterSearchService.createAPIObservable(name).subscribe(results => {
-                    this.results = results.json().results;
-                })
-            })
+            .switchMap(name => this.characterSearchService.createAPIObservable(name)).subscribe(results => {
+                this.results = results.json().results;
+            });
     }
 
 }
