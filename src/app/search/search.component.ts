@@ -27,12 +27,10 @@ export class SearchComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.searchTerms
+        this.results = this.searchTerms
             .debounceTime(300)
             .distinctUntilChanged()
-            .switchMap(name => this.characterSearchService.createAPIObservable(name)).subscribe(results => {
-                this.results = results;
-            });
+            .switchMap(name => this.characterSearchService.createAPIObservable(name));
     }
 
 }
