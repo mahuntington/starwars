@@ -19,7 +19,7 @@ export class SearchComponent implements OnInit {
     searchTerms = new Subject<string>();
 
     constructor(
-        private heroSearchService: SearchService,
+        private characterSearchService: SearchService,
     ) { }
 
     findCharacter(name){
@@ -30,7 +30,7 @@ export class SearchComponent implements OnInit {
         this.results = this.searchTerms
             .debounceTime(300)
             .distinctUntilChanged()
-            .switchMap(name => this.heroSearchService.createAPIObservable(name));
+            .switchMap(name => this.characterSearchService.createAPIObservable(name));
     }
 
 }
